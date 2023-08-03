@@ -71,7 +71,8 @@ has_one :order
 ### Association
 belongs_to :user
 belongs_to :item
-belongs_to :shipping_detail
+has_one :shipping_detail
+
 
 
 
@@ -80,11 +81,13 @@ belongs_to :shipping_detail
 | Column             | Type     | Options             |
 | ------------------ | -------- | ------------------- |
 | postal_code        | string   | null: false         |
-| region             |references| null: false,foreign_key: true       |
+| region_id          | integer  | null: false,foreign_key: true |
 | city               | string   | null: false         |
 | address_line       | string   | null: false         |
 | building_name      | string   |                     |
 | phone_number       | string   | null: false         |
 | order              |references| null: false,foreign_key: true|
+
+
 ### Association
-has_one :order
+belongs_to :order
