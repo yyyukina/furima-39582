@@ -25,7 +25,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Description can't be blank"
       end
 
-      it 'category_idが空では登録できない' do
+      it 'category_idが空では出品できない' do
         @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Category can't be blank"
@@ -97,7 +97,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Image can't be blank"
       end
 
-      it 'userが紐づいていなければ登録できない' do
+      it 'userが紐づいていなければ出品できない' do
         @item.user = nil
         @item.valid?
         expect(@item.errors.full_messages).to include 'User must exist'
