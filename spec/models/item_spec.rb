@@ -26,31 +26,31 @@ RSpec.describe Item, type: :model do
       end
 
       it 'category_idが空では登録できない' do
-        @item.category_id = ''
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Category can't be blank"
       end
 
       it 'condition_idが空では出品できない' do
-        @item.condition_id = ''
+        @item.condition_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Condition can't be blank"
       end
 
       it 'fee_idが空では出品できない' do
-        @item.fee_id = ''
+        @item.fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Fee can't be blank"
       end
 
       it 'region_idが空では出品できない' do
-        @item.region_id = ''
+        @item.region_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include "Region can't be blank"
       end
 
       it 'shipping_day_idが空では出品できない' do
-        @item.shipping_day_id = ''
+        @item.shipping_day_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include "Shipping day can't be blank"
       end
