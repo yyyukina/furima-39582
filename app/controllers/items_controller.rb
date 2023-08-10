@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
     if user_signed_in? && current_user.id == @item.user_id
       render :edit
     else
-      redirect_to new_user_session_path
+      redirect_to root_path
     end
   end
 
