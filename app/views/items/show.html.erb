@@ -8,7 +8,7 @@
     </h2>
     <div class="item-img-content">
       <%= image_tag @item.image.variant(resize: '500x500'), class:"item-box-img" if @item.image.attached?%>
-      <% if @item.orders.present? %>
+      <% if @item.order.present? %>
       <div class="sold-out">
         <span>Sold Out!!</span>
       </div>
@@ -23,22 +23,18 @@
       </span>
     </div>
     <% if user_signed_in? %>
-    <% if @item.user == current_user %>
-    <% if @item.orders.present? %>
-    <% else %>
+    <% if @item.user == current_user && !@item.order.present? %>
     <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn", data: { turbo: false } %>
     <p class="or-text">or</p>
     <%= link_to "削除", item_path(@item), data: { turbo_method: :delete }, class:"item-destroy" %>
-    <% end %>
-    <% elsif !@item.orders.present? %>
+    <% elsif !@item.order.present? %>
     <%= link_to "購入画面に進む", item_orders_path(@item), data: { turbo: false }, class:"item-red-btn"%>
     <% end %>
     <% else %>
-    <% if !@item.orders.present? %>
+    <% if !@item.order.present? %>
     <%= link_to "購入画面に進む", item_orders_path(@item), data: { turbo: false }, class:"item-red-btn"%>
     <% end %>
     <% end %>
-
     <div class="item-explain-box">
       <span><%= @item.description %></span>
     </div>

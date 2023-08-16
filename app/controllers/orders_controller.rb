@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
 
   def item_not_sold
     @item = Item.find(params[:item_id])
-    if @item.user == current_user || @item.orders.present?
+    if @item.user == current_user || @item.order.present?
       redirect_to root_path
     end
   end
