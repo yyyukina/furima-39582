@@ -28,5 +28,4 @@ const pay = () => {
         e.preventDefault();
     });
   };
-  console.log("card")
   window.addEventListener("turbo:load", pay);

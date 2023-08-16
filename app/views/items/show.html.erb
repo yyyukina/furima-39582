@@ -22,16 +22,12 @@
         <%= @item.fee.name %>
       </span>
     </div>
-    <% if user_signed_in? %>
-    <% if @item.user == current_user && !@item.order.present? %>
+    <% if user_signed_in? && !@item.order.present? %>
+    <% if @item.user == current_user %>
     <%= link_to "商品の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn", data: { turbo: false } %>
     <p class="or-text">or</p>
     <%= link_to "削除", item_path(@item), data: { turbo_method: :delete }, class:"item-destroy" %>
-    <% elsif !@item.order.present? %>
-    <%= link_to "購入画面に進む", item_orders_path(@item), data: { turbo: false }, class:"item-red-btn"%>
-    <% end %>
     <% else %>
-    <% if !@item.order.present? %>
     <%= link_to "購入画面に進む", item_orders_path(@item), data: { turbo: false }, class:"item-red-btn"%>
     <% end %>
     <% end %>
